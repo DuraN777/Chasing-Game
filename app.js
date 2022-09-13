@@ -1,9 +1,6 @@
 const chaser = document.querySelector('#chaser');
 const escapee = document.querySelector('#escapee');
 
-
-
-
 // https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values#navigation_keys
 window.addEventListener('keydown', (e) => {
 
@@ -44,6 +41,8 @@ window.addEventListener('keydown', (e) => {
     chaser.style.transform = 'scale(1, 1)';
   }
 
+  // Move escapee if chaser touches him
+  if (isTouching(chaser, escapee)) {runAway()};
 })
 
 
@@ -77,8 +76,8 @@ runAway();
 // Solution found: https://bobbyhadz.com/blog/javascript-check-if-two-elements-overlap
 
 function isTouching(a, b) {
-  const domRect1 = el1.getBoundingClientRect();
-  const domRect2 = el2.getBoundingClientRect();
+  const domRect1 = a.getBoundingClientRect();
+  const domRect2 = b.getBoundingClientRect();
 
   return !(
     domRect1.top > domRect2.bottom ||
