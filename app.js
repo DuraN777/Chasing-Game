@@ -31,6 +31,8 @@ window.addEventListener('keydown', (e) => {
       currLeft = 50;
     }
     chaser.style.left = ` ${currLeft - 50}px`;
+    // flip image to face left ( scale on X-axis)
+    chaser.style.transform = 'scale(-1, 1)';
 
   } else if ( e.key === 'ArrowRight' || e.key === 'Right') {
     let currL = getPosition(chaser.style.left);
@@ -39,6 +41,8 @@ window.addEventListener('keydown', (e) => {
       currL = window.innerWidth - 150;
     }
     chaser.style.left = ` ${currL + 50}px`;
+    // flip image to face right
+    chaser.style.transform = 'scale(1, 1)';
   }
 
 })
