@@ -1,28 +1,32 @@
 const chaser = document.querySelector('#chaser');
 const escapee = document.querySelector('#escapee');
 
+const size = document.querySelector('html');
+console.log(size.clientHeight);
+
 
 
 // https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values#navigation_keys
 window.addEventListener('keydown', (e) => {
 
   if (e.key === 'ArrowDown' || e.key === 'Down') {
-    const currTop = getPosition(chaser.style.top);
-    if (currTop > 450) {
-      currTop = 450;
+    let currTop = getPosition(chaser.style.top);
+    if (currTop > (size.clientHeight - 150)) {
+      currTop = size.clientHeight - 150;
     }
     chaser.style.top = `${currTop +50}px`;
     
   } else if ( e.key === 'ArrowUp' || e.key === 'Up') {
     let currTop = getPosition(chaser.style.top);
-    // Stop player from going off screen on top
-    if (currTop === 0) {
+    // Stop player from going off screen
+    if (currTop <= 0) {
       currTop = 50;
     }
     chaser.style.top = `${currTop - 50}px`;
 
   } else if ( e.key === 'ArrowLeft' || e.key === 'Left') {
     let currLeft = getPosition( chaser.style.left);
+    // Stop player from going off screen
     if (currLeft <= 0) {
       currLeft = 50;
     }
@@ -30,10 +34,10 @@ window.addEventListener('keydown', (e) => {
 
   } else if ( e.key === 'ArrowRight' || e.key === 'Right') {
     let currL = getPosition(chaser.style.left);
+    // Stop player from going off screen
     if (currL > (window.innerWidth - 150)) {
       currL = window.innerWidth - 150;
     }
-
     chaser.style.left = ` ${currL + 50}px`;
   }
 
