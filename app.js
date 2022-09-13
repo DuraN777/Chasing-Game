@@ -1,8 +1,6 @@
 const chaser = document.querySelector('#chaser');
 const escapee = document.querySelector('#escapee');
 
-const size = document.querySelector('html');
-console.log(size.clientHeight);
 
 
 
@@ -11,10 +9,11 @@ window.addEventListener('keydown', (e) => {
 
   if (e.key === 'ArrowDown' || e.key === 'Down') {
     let currTop = getPosition(chaser.style.top);
-    if (currTop > (size.clientHeight - 150)) {
-      currTop = size.clientHeight - 150;
+    if (currTop > (window.innerHeight - 180)) {
+      currTop = window.innerHeight - 180;
     }
     chaser.style.top = `${currTop +50}px`;
+    console.log(currTop);
     
   } else if ( e.key === 'ArrowUp' || e.key === 'Up') {
     let currTop = getPosition(chaser.style.top);
@@ -58,6 +57,21 @@ function  getPosition(pos) {
   if (!pos) return 100; // starting pos in css is top: 100px
   return +pos.slice(0, -2);
 }
+
+// function to get random number between interwals
+// Math.floor(Math.random() * (max - min + 1)) + min;
+function runAway() {
+  const topMax= window.innerHeight - 100;
+  const leftMax = window.innerWidth - 100;
+
+  let x = Math.floor(Math.random() * leftMax);
+  let y = Math.floor(Math.random() * topMax);
+
+  escapee.style.top = `${y}px`;
+  escapee.style.left = `${x}px`;
+}
+
+runAway();
 
 // Check if two objects overlap
 // Solution found: https://bobbyhadz.com/blog/javascript-check-if-two-elements-overlap
