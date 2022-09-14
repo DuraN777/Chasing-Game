@@ -2,12 +2,12 @@ const chaser = document.querySelector('#chaser');
 const escapee = document.querySelector('#escapee');
 const score = document.querySelector('.score');
 
-// key events:
-// https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values#navigation_keys
 
 // Move escapee on interval
 setInterval(runAway, 2000);
 
+// key events:
+// https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values#navigation_keys
 window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowDown' || e.key === 'Down') {
     let currTop = getPosition(chaser.style.top);
