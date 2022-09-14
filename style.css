@@ -26,3 +26,10 @@ img {
 	top: 100px;
 	left: 100px;
 }
+
+@media (max-width: 800px) {
+	img {
+		width: 60px;
+	}
+}
+
