@@ -21,10 +21,14 @@ h2 {
 }
 
 img {
-	width: 100px;
+	width: 90px;
 	position: absolute;
 	top: 100px;
 	left: 100px;
+}
+
+.chaser {
+	z-index: 1;
 }
 
 @media (max-width: 800px) {
