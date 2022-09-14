@@ -1,49 +1,54 @@
 const chaser = document.querySelector('#chaser');
 const escapee = document.querySelector('#escapee');
+const score = document.querySelector('.score');
 
+// key events:
 // https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values#navigation_keys
-window.addEventListener('keydown', (e) => {
 
+window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowDown' || e.key === 'Down') {
     let currTop = getPosition(chaser.style.top);
-    if (currTop > (window.innerHeight - 180)) {
-      currTop = window.innerHeight - 180;
-    }
+      // Stop player from going off screen
+      if (currTop > (window.innerHeight - 180)) {
+        currTop = window.innerHeight - 180;
+      }
     chaser.style.top = `${currTop +50}px`;
     console.log(currTop);
-    
   } else if ( e.key === 'ArrowUp' || e.key === 'Up') {
-    let currTop = getPosition(chaser.style.top);
-    // Stop player from going off screen
-    if (currTop <= 0) {
-      currTop = 50;
-    }
+      let currTop = getPosition(chaser.style.top);
+        // Stop player from going off screen
+        if (currTop <= 0) {
+          currTop = 50;
+      }
     chaser.style.top = `${currTop - 50}px`;
-
   } else if ( e.key === 'ArrowLeft' || e.key === 'Left') {
     let currLeft = getPosition( chaser.style.left);
-    // Stop player from going off screen
-    if (currLeft <= 0) {
-      currLeft = 50;
-    }
+      // Stop player from going off screen
+      if (currLeft <= 0) {
+        currLeft = 50;
+      }
     chaser.style.left = ` ${currLeft - 50}px`;
-    // flip image to face left ( scale on X-axis)
+    // Flip image to face left ( scale on X-axis)
     chaser.style.transform = 'scale(-1, 1)';
-
   } else if ( e.key === 'ArrowRight' || e.key === 'Right') {
-    let currL = getPosition(chaser.style.left);
-    // Stop player from going off screen
-    if (currL > (window.innerWidth - 150)) {
-      currL = window.innerWidth - 150;
-    }
-    chaser.style.left = ` ${currL + 50}px`;
-    // flip image to face right
+    let currLeft = getPosition(chaser.style.left);
+      // Stop player from going off screen
+      if (currLeft > (window.innerWidth - 150)) {
+        currLeft = window.innerWidth - 150;
+      }
+    chaser.style.left = ` ${currLeft + 50}px`;
+    // Flip image to face right
     chaser.style.transform = 'scale(1, 1)';
   }
 
+
   // Move escapee if chaser touches him
-  if (isTouching(chaser, escapee)) {runAway()};
-})
+  if (isTouching(chaser, escapee)) {
+    runAway();
+    score.innerText = +(score.innerText) +1;
+  }
+
+});
 
 
 // Get current position of player (return a number from style)
@@ -57,8 +62,7 @@ function  getPosition(pos) {
   return +pos.slice(0, -2);
 }
 
-// function to get random number between interwals
-// Math.floor(Math.random() * (max - min + 1)) + min;
+//
 function runAway() {
   const topMax= window.innerHeight - 100;
   const leftMax = window.innerWidth - 100;
