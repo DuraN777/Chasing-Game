@@ -10,3 +10,6 @@ The code leaves much to be desired.
 The math to keep character randomly placed inside the window height and width probably won't work perfect in diverse screens.
 Logic could be refactored to look sleeker and easier to read.
 At the end of the excercise I find myself more familiar with event listeners and html properties such as innerWidth and innerHeight(also experimented with outerWidth / outerHeight and clientWidth/clientHeight). 
+
+
+## [Click here](https://chaser-game-demo.netlify.app/) to go to the website.
